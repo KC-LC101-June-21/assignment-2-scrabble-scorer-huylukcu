@@ -37,9 +37,10 @@ function initialPrompt() {
 
 let simpleScore = function(word){
   word = word.toUpperCase();
-   for (i = 0; i < word.length; i++) {
-    console.log(`\nPoints for '${word[i]}': ${letterPoints / word.length}'`);
-   }
+   for (i = 0; i < word.length; i++) 
+  //  {
+  //   console.log(`\nPoints for '${word[i]}': ${letterPoints / word.length}'`);
+  //  }
   return word.length;
 }
 
