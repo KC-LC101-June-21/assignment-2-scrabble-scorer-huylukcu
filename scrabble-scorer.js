@@ -29,7 +29,9 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt() {
   let inputUser = input.question(`Let's play some scrabble!\nEnter a word to score: `);
-  
+  while(/[^A-Za-z\s]/.test(inputUser) === true || inputUser === ""){
+    inputUser = input.question(`Please, only enter letters: `)
+  }
   return inputUser;
 };
 
@@ -37,10 +39,6 @@ function initialPrompt() {
 
 let simpleScore = function(word){
   word = word.toUpperCase();
-   for (i = 0; i < word.length; i++) 
-  //  {
-  //   console.log(`\nPoints for '${word[i]}': ${letterPoints / word.length}'`);
-  //  }
   return word.length;
 }
 
@@ -88,18 +86,18 @@ const scoringAlgorithms = [{
 
 let userInput;
 function scorerPrompt() {
-  let askUser = Number(input.question(`Which scoring algorithm would you like to use?\n
+  let userRespond = Number(input.question(`Which scoring algorithm would you like to use?\n
   0 - ${scoringAlgorithms[0].name}: ${scoringAlgorithms[0].description}\n
   1 - ${scoringAlgorithms[1].name}: ${scoringAlgorithms[1].description}\n
   2 - ${scoringAlgorithms[2].name}: ${scoringAlgorithms[2].description}\n
   Enter 0, 1, or 2: `));
   
 
-  if(askUser === 0){
+  if(userRespond === 0){
     console.log(`Score for '${userInput}': ${scoringAlgorithms[0].scoringFunction(userInput)}`);
-  } else if(askUser === 1){
+  } else if(userRespond === 1){
     console.log(`Score for '${userInput}': ${scoringAlgorithms[1].scoringFunction(userInput)}`);
-  }else if(askUser === 2){
+  }else if(userRespond === 2){
     console.log(`Score for '${userInput}': ${scoringAlgorithms[2].scoringFunction(userInput)}`);
   }
 };
